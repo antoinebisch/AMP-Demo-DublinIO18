@@ -31,7 +31,10 @@
         padding: 10px;
       }
       h1 {
-        margin: 1rem;
+        margin: 0;
+        padding: 6px;
+        background: #32ebb4;
+        color: white;
       }
       #carousel .caption {
         position: absolute;
@@ -61,8 +64,8 @@
 
       #news-articles {
         padding: 6px;
-        margin: 2px;
-        background: lightgrey;
+        margin: 10px;
+        background: #32ebb4;
       }
 
       .news-article-img-container {
@@ -84,16 +87,17 @@
       }
 
       .country-codes li {
+        cursor: pointer;
         display: inline-block;
         background: black;
-        color: white;
-        border: 2px solid white;
+        color: #32ebb4  ;
+        border: 2px solid #32ebb4 ;
         padding: 4px;
         margin: 4px;
       }
 
       .country-codes li.selected {
-        background: white;
+        background: #32ebb4 ;
         color: black;
         border-color: black;
       }
@@ -103,36 +107,41 @@
 
 <body>
   <!-- States -->
-    <amp-state id="slide">
-      <script type="application/json">
-        {
-          "selected": 0
-        }
-      </script>
-    </amp-state>
-    <amp-state id="newsApiUrl">
-      <script type="application/json">
-        {
-          "preCountry": "https://newsapi.org/v2/top-headlines?country=",
-          "countryCode": "gb",
-          "postCountry": "&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87",
-          "test": "https://powerful-slash.glitch.me/"
-        }
-      </script>
-    </amp-state>
+    <!-- For Carousel -->
+      <amp-state id="slide">
+        <script type="application/json">
+          {
+            "selected": 0
+          }
+        </script>
+      </amp-state>
+    <!-- /For Carousel -->
+    <!-- For News Feed -->
+      <amp-state id="newsApiUrl">
+        <script type="application/json">
+          {
+            "preCountry": "https://newsapi.org/v2/top-headlines?country=",
+            "countryCode": "gb",
+            "postCountry": "&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87",
+            "test": "https://powerful-slash.glitch.me/"
+          }
+        </script>
+      </amp-state>
+    <!-- /For News Feed -->
   <!-- /States -->
-  
+
   <!-- Content -->
     <h1>AMP E-Commerce Demo - Dublin I/O '18</h1>
 
     <!-- Carousel -->
       <!-- Slide Counter -->
         <p> Selected slide:
-          <span [text]="+slide.selected + 1">1</span>/3
+          <strong [text]="+slide.selected + 1">1</strong>/3
         </p>
       <!-- /Slide Counter -->
       <!-- Carousel Element -->
-        <amp-carousel id="carousel"
+        <amp-carousel controls
+          id="carousel"
           layout="responsive"
           height="400"
           width="500"
@@ -168,7 +177,7 @@
         </amp-carousel>
       <!-- /Carousel Element -->
       <!-- Carousel Thumbnails -->
-        <amp-carousel controls
+        <div
           width="400"
           height="100"
           id="carousel-control">
@@ -196,7 +205,7 @@
             class = ""
             [class]="slide.selected == 2 ? 'selected' : ''"
             on="tap:AMP.setState({slide:{selected: 2}})"></amp-img>
-        </amp-carousel>
+        </div>
       <!-- /Carousel Thumbnails -->
     <!-- /Carousel -->
 
