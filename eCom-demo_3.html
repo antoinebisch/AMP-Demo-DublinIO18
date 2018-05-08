@@ -12,9 +12,9 @@
 
   <!-- Includes -->
     <!-- For Carousel -->
-<!--       <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+      <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
       <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
-      <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script> -->
+      <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <!-- /For Carousel -->
     <!-- For News Feed -->
 <!--       <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
@@ -106,8 +106,108 @@
 </head>
 
 <body>
+  <!-- States -->
+    <!-- For Carousel -->
+      <amp-state id="slide">
+        <script type="application/json">
+          {
+            "selected": 0
+          }
+        </script>
+      </amp-state>
+    <!-- /For Carousel -->
+    <!-- For News Feed -->
+      <!-- <amp-state id="newsApiUrl">
+        <script type="application/json">
+          {
+            "preCountry": "https://newsapi.org/v2/top-headlines?country=",
+            "countryCode": "gb",
+            "postCountry": "&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87",
+            "test": "https://powerful-slash.glitch.me/"
+          }
+        </script>
+      </amp-state> -->
+    <!-- /For News Feed -->
+  <!-- /States -->
+  
   <!-- Content -->
     <h1>AMP E-Commerce Demo - Dublin I/O '18</h1>
+
+    <!-- Carousel -->
+      <!-- Slide Counter -->
+        <p> Selected slide:
+          <strong [text]="+slide.selected + 1">1</strong>/3
+        </p>
+      <!-- /Slide Counter -->
+      <!-- Carousel Element -->
+        <amp-carousel controls
+          id="carousel"
+          layout="responsive"
+          height="400"
+          width="500"
+          [slide]="slide.selected"
+          on="slideChange:AMP.setState({slide:{selected: event.index}})"
+          type="slides">
+          <div class="slide">
+            <amp-img src="https://placekitten.com/600/400"
+              layout="fill"
+              alt="Kitten"></amp-img>
+            <div class="caption">
+              Kitten!!!
+            </div>
+          </div>
+
+          <div class="slide">
+            <amp-img src="https://placebear.com/600/400"
+              layout="fill"
+              alt="Bear"></amp-img>
+            <div class="caption">
+              Bear!!!
+            </div>
+          </div>
+
+          <div class="slide">
+            <amp-img src="https://baconmockup.com/600/400/"
+              layout="fill"
+              alt="Meat"></amp-img>
+            <div class="caption">
+              Meat!!!
+            </div>
+          </div>
+        </amp-carousel>
+      <!-- /Carousel Element -->
+      <!-- Carousel Thumbnails -->
+        <!-- <div
+          width="400"
+          height="100"
+          id="carousel-control">
+          <amp-img src="https://placekitten.com/100/75"
+            width="100"
+            height="75"
+            role="button"
+            tabindex="0"
+            class = "selected"
+            [class]="slide.selected == 0 ? 'selected' : ''"
+            on="tap:AMP.setState({slide:{selected: 0}})"></amp-img>
+          <amp-img src="https://placebear.com/100/75"
+            width="100"
+            height="75"
+            role="button"
+            tabindex="1"
+            class =""
+            [class]="slide.selected == 1 ? 'selected' : ''"
+            on="tap:AMP.setState({slide:{selected: 1}})"></amp-img>
+          <amp-img src="https://baconmockup.com/100/75/"
+            width="100"
+            height="75"
+            role="button"
+            tabindex="2"
+            class = ""
+            [class]="slide.selected == 2 ? 'selected' : ''"
+            on="tap:AMP.setState({slide:{selected: 2}})"></amp-img>
+        </div> -->
+      <!-- /Carousel Thumbnails -->
+    <!-- /Carousel -->
 
     <p>News API provided by <a href="https://newsapi.org/">newsapi.org</a></p>
   <!-- /Content -->
