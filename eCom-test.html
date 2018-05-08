@@ -26,15 +26,36 @@
     <style amp-custom>
       * {
         outline:none;
+        font-family: sans-serif;
       }
       body {
+        padding: 0px;
+        margin: 0px;
+      }
+      main{
+        padding: 0px;
+      }
+      header{
+        background-color: #fff;
+        height: 3.5rem;
+        box-shadow: none;
+        border-bottom: 1px solid #f3f3f3;
         padding: 10px;
+      }
+      .logo{
+        display: block;
+        margin: auto;
+        margin-top: 1rem;
       }
       h1 {
         margin: 0;
         padding: 6px;
-        background: #32ebb4;
-        color: white;
+        color: #202020;
+        font-size: 19px;
+      }
+      .indicator{
+        text-align: center;
+        color: #000000a3;
       }
       #carousel .caption {
         position: absolute;
@@ -64,9 +85,12 @@
 
       #news-articles {
         padding: 6px;
+        border: 1px solid #bababa99;
         margin: 10px;
-        background: #32ebb4;
+        background: #f2f2f2;
       }
+
+      #news-articles h2{font-size: 15px;}
 
       .news-article-img-container {
         position: relative;
@@ -84,202 +108,233 @@
         padding: 0;
         width: 100%;
         text-align:center;
+        margin-top: 50px;
       }
 
       .country-codes li {
         cursor: pointer;
         display: inline-block;
-        background: black;
-        color: #32ebb4  ;
-        border: 2px solid #32ebb4 ;
+        color: #000000;
+        border: 2px solid #000000;
         padding: 4px;
         margin: 4px;
       }
 
       .country-codes li.selected {
-        background: #32ebb4 ;
         color: black;
         border-color: black;
+        background: #e8e8e8;
+      }
+      .product-details{
+        padding: 10px;
+        margin: 0px;
+      }
+      .price{
+        font-size: 24px;
+      }
+      .mt-m{
+        margin-top: 30px;
       }
     </style>
   <!-- /Custom Style -->
 </head>
 
 <body>
-  <!-- States -->
-    <!-- For Carousel -->
-      <amp-state id="slide">
-        <script type="application/json">
-          {
-            "selected": 0
-          }
-        </script>
-      </amp-state>
-    <!-- /For Carousel -->
-    <!-- For News Feed -->
-      <amp-state id="newsApiUrl">
-        <script type="application/json">
-          {
-            "preCountry": "https://newsapi.org/v2/top-headlines?country=",
-            "countryCode": "gb",
-            "postCountry": "&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87",
-            "test": "https://powerful-slash.glitch.me/"
-          }
-        </script>
-      </amp-state>
-    <!-- /For News Feed -->
-  <!-- /States -->
 
-  <!-- Content -->
-    <h1>AMP E-Commerce Demo - Dublin I/O '18</h1>
+  <header>
+      <amp-img src="https://www.ampstart.com/img/e-commerce/logo.png" class="logo" width="96" height="27" layout="fixed"></amp-img>
+  </header>
 
-    <!-- Carousel -->
-      <!-- Slide Counter -->
-        <p> Selected slide:
-          <strong [text]="+slide.selected + 1">1</strong>/3
-        </p>
-      <!-- /Slide Counter -->
-      <!-- Carousel Element -->
-        <amp-carousel controls
-          id="carousel"
-          layout="responsive"
-          height="400"
-          width="500"
-          type="slides"
-          [slide]="slide.selected"
-          on="slideChange:AMP.setState({slide:{selected: event.index}})">
-          <div class="slide">
-            <amp-img src="https://placekitten.com/600/400"
-              layout="fill"
-              alt="Kitten"></amp-img>
-            <div class="caption">
-              Kitten!!!
+  <main>
+
+    <!-- States -->
+      <!-- For Carousel -->
+        <amp-state id="slide">
+          <script type="application/json">
+            {
+              "selected": 0
+            }
+          </script>
+        </amp-state>
+      <!-- /For Carousel -->
+      <!-- For News Feed -->
+        <amp-state id="newsApiUrl">
+          <script type="application/json">
+            {
+              "preCountry": "https://newsapi.org/v2/top-headlines?country=",
+              "countryCode": "gb",
+              "postCountry": "&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87",
+              "test": "https://powerful-slash.glitch.me/"
+            }
+          </script>
+        </amp-state>
+      <!-- /For News Feed -->
+    <!-- /States -->
+
+    <!-- Content -->
+      
+      <!-- Carousel -->
+        <!-- Slide Counter -->
+          <p class="indicator"> Selected slide:
+            <strong [text]="+slide.selected + 1">1</strong>/3
+          </p>
+        <!-- /Slide Counter -->
+        <!-- Carousel Element -->
+          <amp-carousel controls
+            id="carousel"
+            layout="responsive"
+            height="400"
+            width="500"
+            type="slides"
+            [slide]="slide.selected"
+            on="slideChange:AMP.setState({slide:{selected: event.index}})">
+            <div class="slide">
+              <amp-img src="/img/dark-large-1.jpg"
+                layout="fill"
+                alt="Kitten"></amp-img>
+              <div class="caption">
+                Kitten!!!
+              </div>
             </div>
-          </div>
 
-          <div class="slide">
-            <amp-img src="https://placebear.com/600/400"
-              layout="fill"
-              alt="Bear"></amp-img>
-            <div class="caption">
-              Bear!!!
+            <div class="slide">
+              <amp-img src="/img/dark-large-2.jpg"
+                layout="fill"
+                alt="Bear"></amp-img>
+              <div class="caption">
+                Bear!!!
+              </div>
             </div>
-          </div>
 
-          <div class="slide">
-            <amp-img src="https://baconmockup.com/600/400/"
-              layout="fill"
-              alt="Meat"></amp-img>
-            <div class="caption">
-              Meat!!!
+            <div class="slide">
+              <amp-img src="/img/dark-large-3.jpg"
+                layout="fill"
+                alt="Meat"></amp-img>
+              <div class="caption">
+                Meat!!!
+              </div>
             </div>
+          </amp-carousel>
+        <!-- /Carousel Element -->
+        <!-- Carousel Thumbnails -->
+          <div id="carousel-control">
+            <amp-img src="/img/dark-small-1.jpg"
+              width="100"
+              height="75"
+              role="button"
+              tabindex="0"
+              class = "selected"
+              [class]="slide.selected == 0 ? 'selected' : ''"
+              on="tap:AMP.setState({slide:{selected: 0}})"></amp-img>
+            <amp-img src="/img/dark-small-2.jpg"
+              width="100"
+              height="75"
+              role="button"
+              tabindex="1"
+              class =""
+              [class]="slide.selected == 1 ? 'selected' : ''"
+              on="tap:AMP.setState({slide:{selected: 1}})"></amp-img>
+            <amp-img src="/img/dark-small-3.jpg"
+              width="100"
+              height="75"
+              role="button"
+              tabindex="2"
+              class = ""
+              [class]="slide.selected == 2 ? 'selected' : ''"
+              on="tap:AMP.setState({slide:{selected: 2}})"></amp-img>
           </div>
-        </amp-carousel>
-      <!-- /Carousel Element -->
-      <!-- Carousel Thumbnails -->
-        <div id="carousel-control">
-          <amp-img src="https://placekitten.com/100/75"
-            width="100"
-            height="75"
-            role="button"
-            tabindex="0"
-            class = "selected"
-            [class]="slide.selected == 0 ? 'selected' : ''"
-            on="tap:AMP.setState({slide:{selected: 0}})"></amp-img>
-          <amp-img src="https://placebear.com/100/75"
-            width="100"
-            height="75"
-            role="button"
-            tabindex="1"
-            class =""
-            [class]="slide.selected == 1 ? 'selected' : ''"
-            on="tap:AMP.setState({slide:{selected: 1}})"></amp-img>
-          <amp-img src="https://baconmockup.com/100/75/"
-            width="100"
-            height="75"
-            role="button"
-            tabindex="2"
-            class = ""
-            [class]="slide.selected == 2 ? 'selected' : ''"
-            on="tap:AMP.setState({slide:{selected: 2}})"></amp-img>
-        </div>
-      <!-- /Carousel Thumbnails -->
-    <!-- /Carousel -->
+        <!-- /Carousel Thumbnails -->
+      <!-- /Carousel -->
 
-    <!-- News Feed -->
-      <!-- Country Code Selector -->
-        <ul class="country-codes">
-          <li role="button"
-            tabindex="3"
-            class = "selected"
-            [class]="newsApiUrl.countryCode == 'gb' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'gb'}})">GB</li>
-          <li role="button"
-            tabindex="4"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'fr' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'fr'}})">FR</li>
-          <li role="button"
-            tabindex="5"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'it' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'it'}})">IT</li>
-          <li role="button"
-            tabindex="6"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'de' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'de'}})">DE</li>
-        </ul>
-      <!-- /Country Code Selector -->
-      <!-- List Element -->
-        <amp-list id="list" width="auto"
-          height="400"
-          layout="fixed-height"
-          src= "https://newsapi.org/v2/top-headlines?country=gb&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87" 
-          [src] = "newsApiUrl.preCountry + newsApiUrl.countryCode + newsApiUrl.postCountry"
-          items="articles"
-          class="m1">
-          <div placeholder>Loading News...</div>
-          <div fallback>Failed to load data.</div>
-            <template type="amp-mustache"
-              id="amp-template-id">
-              <article id="news-articles">
-                <h2>{{{title}}}</h2>
-                <div class="news-article-img-container">
-                  <amp-img layout="fill"
-                    src="{{urlToImage}}{{^urlToImage}}https://storage.googleapis.com/cs-emea-assets/antoine/images/dinosaur.png{{/urlToImage}}"></amp-img>
-                </div>
-              </article>
-            </template>
-        </amp-list>
-      <!-- /List Element -->
-      <!-- Country Code Selector -->
-        <ul class="country-codes">
-          <li role="button"
-            tabindex="3"
-            class = "selected"
-            [class]="newsApiUrl.countryCode == 'gb' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'gb'}})">GB</li>
-          <li role="button"
-            tabindex="4"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'fr' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'fr'}})">FR</li>
-          <li role="button"
-            tabindex="5"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'it' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'it'}})">IT</li>
-          <li role="button"
-            tabindex="6"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'de' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'de'}})">DE</li>
-        </ul>
-      <!-- /Country Code Selector -->
-    <!-- News Feed -->
+      <!-- Product details -->
+      <section class="product-details">
+        <h1>AMP E-Commerce Demo - Dublin I/O '18</h1>
+        
+        <p class="price"> 455€ </p>
 
-    <p>News API provided by <a href="https://newsapi.org/">newsapi.org</a></p>
-  <!-- /Content -->
+        <p> Built with lightweight aluminum for speed. </p>
+      </section>
+      <!-- /Product details -->
+
+
+      <!-- News Feed -->
+        <!-- Country Code Selector -->
+          <ul class="country-codes">
+            <li role="button"
+              tabindex="3"
+              class = "selected"
+              [class]="newsApiUrl.countryCode == 'gb' ? 'selected' : ''"
+              on="tap:AMP.setState({newsApiUrl:{countryCode: 'gb'}})">GB</li>
+            <li role="button"
+              tabindex="4"
+              class = ""
+              [class]="newsApiUrl.countryCode == 'fr' ? 'selected' : ''"
+              on="tap:AMP.setState({newsApiUrl:{countryCode: 'fr'}})">FR</li>
+            <li role="button"
+              tabindex="5"
+              class = ""
+              [class]="newsApiUrl.countryCode == 'it' ? 'selected' : ''"
+              on="tap:AMP.setState({newsApiUrl:{countryCode: 'it'}})">IT</li>
+            <li role="button"
+              tabindex="6"
+              class = ""
+              [class]="newsApiUrl.countryCode == 'de' ? 'selected' : ''"
+              on="tap:AMP.setState({newsApiUrl:{countryCode: 'de'}})">DE</li>
+          </ul>
+        <!-- /Country Code Selector -->
+        <!-- List Element -->
+          <amp-list id="list" width="auto"
+            height="400"
+            layout="fixed-height"
+            src= "https://newsapi.org/v2/top-headlines?country=gb&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87" 
+            [src] = "newsApiUrl.preCountry + newsApiUrl.countryCode + newsApiUrl.postCountry"
+            items="articles"
+            class="m1">
+            <div class="indicator mt-m" placeholder>Loading News...</div>
+            <div fallback>Failed to load data.</div>
+              <template type="amp-mustache"
+                id="amp-template-id">
+                <article id="news-articles">
+                  <h2>{{{title}}}</h2>
+                  <div class="news-article-img-container">
+                    <amp-img layout="fill"
+                      src="{{urlToImage}}{{^urlToImage}}https://storage.googleapis.com/cs-emea-assets/antoine/images/dinosaur.png{{/urlToImage}}"></amp-img>
+                  </div>
+                </article>
+              </template>
+          </amp-list>
+        <!-- /List Element -->
+
+        <!-- product details -->
+
+        <!-- Country Code Selector -->
+          <ul class="country-codes">
+            <li role="button"
+              tabindex="3"
+              class = "selected"
+              [class]="newsApiUrl.countryCode == 'gb' ? 'selected' : ''"
+              on="tap:AMP.setState({newsApiUrl:{countryCode: 'gb'}})">GB</li>
+            <li role="button"
+              tabindex="4"
+              class = ""
+              [class]="newsApiUrl.countryCode == 'fr' ? 'selected' : ''"
+              on="tap:AMP.setState({newsApiUrl:{countryCode: 'fr'}})">FR</li>
+            <li role="button"
+              tabindex="5"
+              class = ""
+              [class]="newsApiUrl.countryCode == 'it' ? 'selected' : ''"
+              on="tap:AMP.setState({newsApiUrl:{countryCode: 'it'}})">IT</li>
+            <li role="button"
+              tabindex="6"
+              class = ""
+              [class]="newsApiUrl.countryCode == 'de' ? 'selected' : ''"
+              on="tap:AMP.setState({newsApiUrl:{countryCode: 'de'}})">DE</li>
+          </ul>
+        <!-- /Country Code Selector -->
+      <!-- News Feed -->
+
+      <p>News API provided by <a href="https://newsapi.org/">newsapi.org</a></p>
+    <!-- /Content -->
+  </main>
 </body>
 </html>

@@ -24,17 +24,38 @@
 
   <!-- Custom Style -->
     <style amp-custom>
-      * {
+       * {
         outline:none;
+        font-family: sans-serif;
       }
       body {
+        padding: 0px;
+        margin: 0px;
+      }
+      main{
+        padding: 0px;
+      }
+      header{
+        background-color: #fff;
+        height: 3.5rem;
+        box-shadow: none;
+        border-bottom: 1px solid #f3f3f3;
         padding: 10px;
+      }
+      .logo{
+        display: block;
+        margin: auto;
+        margin-top: 1rem;
       }
       h1 {
         margin: 0;
         padding: 6px;
-        background: #32ebb4;
-        color: white;
+        color: #202020;
+        font-size: 19px;
+      }
+      .indicator{
+        text-align: center;
+        color: #000000a3;
       }
       #carousel .caption {
         position: absolute;
@@ -64,9 +85,12 @@
 
       #news-articles {
         padding: 6px;
+        border: 1px solid #bababa99;
         margin: 10px;
-        background: #32ebb4;
+        background: #f2f2f2;
       }
+
+      #news-articles h2{font-size: 15px;}
 
       .news-article-img-container {
         position: relative;
@@ -84,22 +108,32 @@
         padding: 0;
         width: 100%;
         text-align:center;
+        margin-top: 50px;
       }
 
       .country-codes li {
         cursor: pointer;
         display: inline-block;
-        background: black;
-        color: #32ebb4  ;
-        border: 2px solid #32ebb4 ;
+        color: #000000;
+        border: 2px solid #000000;
         padding: 4px;
         margin: 4px;
       }
 
       .country-codes li.selected {
-        background: #32ebb4 ;
         color: black;
         border-color: black;
+        background: #e8e8e8;
+      }
+      .product-details{
+        padding: 10px;
+        margin: 0px;
+      }
+      .price{
+        font-size: 24px;
+      }
+      .mt-m{
+        margin-top: 30px;
       }
     </style>
   <!-- /Custom Style -->
