@@ -14,11 +14,11 @@
     <!-- For Carousel -->
       <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
       <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
-      <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <!-- /For Carousel -->
     <!-- For News Feed -->
+<!--       <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
       <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-      <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+      <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script> -->
     <!-- For News Feed -->
   <!-- /Includes -->
 
@@ -106,38 +106,14 @@
 </head>
 
 <body>
-  <!-- States -->
-    <!-- For Carousel -->
-      <amp-state id="slide">
-        <script type="application/json">
-          {
-            "selected": 0
-          }
-        </script>
-      </amp-state>
-    <!-- /For Carousel -->
-    <!-- For News Feed -->
-      <amp-state id="newsApiUrl">
-        <script type="application/json">
-          {
-            "preCountry": "https://newsapi.org/v2/top-headlines?country=",
-            "countryCode": "gb",
-            "postCountry": "&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87",
-            "test": "https://powerful-slash.glitch.me/"
-          }
-        </script>
-      </amp-state>
-    <!-- /For News Feed -->
-  <!-- /States -->
-
   <!-- Content -->
     <h1>AMP E-Commerce Demo - Dublin I/O '18</h1>
 
     <!-- Carousel -->
       <!-- Slide Counter -->
-        <p> Selected slide:
+        <!-- <p> Selected slide:
           <strong [text]="+slide.selected + 1">1</strong>/3
-        </p>
+        </p> -->
       <!-- /Slide Counter -->
       <!-- Carousel Element -->
         <amp-carousel controls
@@ -145,9 +121,9 @@
           layout="responsive"
           height="400"
           width="500"
-          type="slides"
-          [slide]="slide.selected"
-          on="slideChange:AMP.setState({slide:{selected: event.index}})">
+          type="slides">
+          <!-- [slide]="slide.selected"
+          on="slideChange:AMP.setState({slide:{selected: event.index}})" -->
           <div class="slide">
             <amp-img src="https://placekitten.com/600/400"
               layout="fill"
@@ -177,7 +153,7 @@
         </amp-carousel>
       <!-- /Carousel Element -->
       <!-- Carousel Thumbnails -->
-        <div
+        <!-- <div
           width="400"
           height="100"
           id="carousel-control">
@@ -205,82 +181,9 @@
             class = ""
             [class]="slide.selected == 2 ? 'selected' : ''"
             on="tap:AMP.setState({slide:{selected: 2}})"></amp-img>
-        </div>
+        </div> -->
       <!-- /Carousel Thumbnails -->
     <!-- /Carousel -->
-
-    <!-- News Feed -->
-      <!-- Country Code Selector -->
-        <ul class="country-codes">
-          <li role="button"
-            tabindex="3"
-            class = "selected"
-            [class]="newsApiUrl.countryCode == 'gb' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'gb'}})">GB</li>
-          <li role="button"
-            tabindex="4"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'fr' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'fr'}})">FR</li>
-          <li role="button"
-            tabindex="5"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'it' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'it'}})">IT</li>
-          <li role="button"
-            tabindex="6"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'de' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'de'}})">DE</li>
-        </ul>
-      <!-- /Country Code Selector -->
-      <!-- List Element -->
-        <amp-list id="list" width="auto"
-          height="400"
-          layout="fixed-height"
-          src= "https://newsapi.org/v2/top-headlines?country=gb&pageSize=4&apiKey=624a81d416d24554b7969ec99bc3fa87" 
-          [src] = "newsApiUrl.preCountry + newsApiUrl.countryCode + newsApiUrl.postCountry"
-          items="articles"
-          class="m1">
-          <div placeholder>Loading News...</div>
-          <div fallback>Failed to load data.</div>
-            <template type="amp-mustache"
-              id="amp-template-id">
-              <article id="news-articles">
-                <h2>{{{title}}}</h2>
-                <div class="news-article-img-container">
-                  <amp-img layout="fill"
-                    src="{{urlToImage}}{{^urlToImage}}https://storage.googleapis.com/cs-emea-assets/antoine/images/dinosaur.png{{/urlToImage}}"></amp-img>
-                </div>
-              </article>
-            </template>
-        </amp-list>
-      <!-- /List Element -->
-      <!-- Country Code Selector -->
-        <ul class="country-codes">
-          <li role="button"
-            tabindex="3"
-            class = "selected"
-            [class]="newsApiUrl.countryCode == 'gb' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'gb'}})">GB</li>
-          <li role="button"
-            tabindex="4"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'fr' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'fr'}})">FR</li>
-          <li role="button"
-            tabindex="5"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'it' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'it'}})">IT</li>
-          <li role="button"
-            tabindex="6"
-            class = ""
-            [class]="newsApiUrl.countryCode == 'de' ? 'selected' : ''"
-            on="tap:AMP.setState({newsApiUrl:{countryCode: 'de'}})">DE</li>
-        </ul>
-      <!-- /Country Code Selector -->
-    <!-- News Feed -->
 
     <p>News API provided by <a href="https://newsapi.org/">newsapi.org</a></p>
   <!-- /Content -->

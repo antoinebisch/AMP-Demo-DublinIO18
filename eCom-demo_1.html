@@ -1,0 +1,115 @@
+<!doctype html>
+<html ⚡>
+<head>
+  <!-- Compulsory content -->
+    <meta charset="utf-8">
+    <title>My AMP Page</title>
+    <link rel="canonical" href="self.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <!-- /Compulsory content -->
+
+  <!-- Includes -->
+    <!-- For Carousel -->
+<!--       <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+      <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script> -->
+    <!-- /For Carousel -->
+    <!-- For News Feed -->
+<!--       <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+      <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+      <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script> -->
+    <!-- For News Feed -->
+  <!-- /Includes -->
+
+  <!-- Custom Style -->
+    <style amp-custom>
+      * {
+        outline:none;
+      }
+      body {
+        padding: 10px;
+      }
+      h1 {
+        margin: 0;
+        padding: 6px;
+        background: #32ebb4;
+        color: white;
+      }
+      #carousel .caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #ddd;
+        font-size: medium;
+        max-height: 30%;
+      }
+      #carousel-control {
+        padding: 10px 0;
+        text-align: center;
+      }
+      #carousel-control amp-img {
+        border: solid 2px white;
+      }
+      #carousel-control amp-img.selected {
+        border-color: black;
+      }
+
+      #list {
+        overflow: scroll;
+      }
+
+      #news-articles {
+        padding: 6px;
+        margin: 10px;
+        background: #32ebb4;
+      }
+
+      .news-article-img-container {
+        position: relative;
+        width: 200px;
+        height: 140px;
+        margin: 0 auto;
+      }
+      .news-article-img-container img {
+        object-fit: contain;
+      }
+
+      .country-codes {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align:center;
+      }
+
+      .country-codes li {
+        cursor: pointer;
+        display: inline-block;
+        background: black;
+        color: #32ebb4  ;
+        border: 2px solid #32ebb4 ;
+        padding: 4px;
+        margin: 4px;
+      }
+
+      .country-codes li.selected {
+        background: #32ebb4 ;
+        color: black;
+        border-color: black;
+      }
+    </style>
+  <!-- /Custom Style -->
+</head>
+
+<body>
+  <!-- Content -->
+    <h1>AMP E-Commerce Demo - Dublin I/O '18</h1>
+
+    <p>News API provided by <a href="https://newsapi.org/">newsapi.org</a></p>
+  <!-- /Content -->
+</body>
+</html>
