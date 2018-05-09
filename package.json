@@ -1,0 +1,20 @@
+{
+  "name": "AMP-Demo-DublinIO18",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "python -m SimpleHTTPServer 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoinebisch/AMP-Demo-DublinIO18.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoinebisch/AMP-Demo-DublinIO18/issues"
+  },
+  "homepage": "https://github.com/antoinebisch/AMP-Demo-DublinIO18#readme"
+}
